@@ -1,0 +1,249 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+header {
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  color: white;
+  text-align: center;
+  padding: 1.2rem;
+  width: 100%;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+  transition: border-color 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #b266ff;
+  outline: none;
+}
+
+button {
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #f107a3, #7b2ff7);
+  transform: translateY(-2px);
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  display: none;
+}
+
+#notesContainer,
+#archivedNotesContainer,
+#filteredNotesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+.note {
+  background: #1e1e1e;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 5px solid #b266ff;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.note:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.note h2 {
+  margin-top: 0;
+  color: #d1b3ff;
+}
+
+.note small {
+  display: block;
+  margin-top: 10px;
+  color: #aaa;
+}
+
+.note .delete-btn,
+.note .archive-btn,
+.note .unarchive-btn {
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  color: white;
+}
+
+.note .delete-btn {
+  background-color: #ff4d4d;
+}
+
+.note .delete-btn:hover {
+  background-color: #cc0000;
+}
+
+.note .archive-btn {
+  background-color: #4d94ff;
+}
+
+.note .archive-btn:hover {
+  background-color: #0066cc;
+}
+
+.note .unarchive-btn {
+  background-color: #a75fff;
+}
+
+.note .unarchive-btn:hover {
+  background-color: #843fe5;
+}
+
+footer {
+  background: linear-gradient(135deg, #1a1a1a, #000);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  font-size: 0.9rem;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+  margin-top: auto;
+}
+
+footer p {
+  margin: 0.5rem 0;
+}
+
+footer a {
+  color: #b266ff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #f107a3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 10px;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  #notesContainer,
+  #archivedNotesContainer,
+  #filteredNotesContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .note {
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 18, 18, 0.8);
+  z-index: 999;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #444;
+  border-top-color: #b266ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
